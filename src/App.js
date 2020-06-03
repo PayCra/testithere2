@@ -1,30 +1,37 @@
 import React from 'react';
 
-function App() {
+const picturesOfJiLi = [
+    "纪李/jili0.jpeg",
+    "纪李/jili1.jpg",
+    "纪李/jili2.jpg",
+    "纪李/jili3.jpg",
+    "纪李/jili4.jpg"];
 
-    let Mypeople = class {
-        constructor(person1, person2) {
-            this.person1 = person1;
-            this.person2 = person2;
-        }
+let myNumber = Math.floor(Math.random() * 5);
 
-        whoarethey = function () {
-            return (`${this.person1} is great, but ${this.person2} is not.`);
-        }
+console.log(myNumber);
 
+class App extends React.Component {
+
+    state = {
+        link: picturesOfJiLi[myNumber]
     };
 
-    let hah = new Mypeople("Kasia","Marek");
+    handleClick = () => {
+        myNumber = (myNumber + 1 + Math.floor(Math.random()*100) % 4) % 5;
+            this.setState({link: picturesOfJiLi[myNumber]})
+        };
 
-    console.log(hah.whoarethey());
-
-
+    render() {
     return (
         <div>
-            BluBlu
+            Click on the picture to shuffle Ji Li pics:
+            <div>
+            <img src={this.state.link} alt={"unable to load Ji Li"} onClick={this.handleClick}/>
+            </div>
         </div>
     )
-
+}
 }
 
 export default App;
