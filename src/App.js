@@ -9,17 +9,18 @@ const picturesOfJiLi = [
 
 let myNumber = Math.floor(Math.random() * 5);
 
-console.log(myNumber);
-
 class App extends React.Component {
 
     state = {
         link: picturesOfJiLi[myNumber]
     };
 
+    //why do I need the floor? Why not random times 100?
+    //100 can be any other number, right? Like 25? Or 37?
+
     handleClick = () => {
-        myNumber = (myNumber + 1 + Math.floor(Math.random()*100) % 4) % 5;
-            this.setState({link: picturesOfJiLi[myNumber]})
+        myNumber = (myNumber + 1 + Math.floor(Math.random()*37) % 4) % 5;
+        this.setState({link: picturesOfJiLi[myNumber]})
         };
 
     render() {
