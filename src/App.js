@@ -1,38 +1,21 @@
 import React from 'react';
+import "./App.css";
 
-const picturesOfJiLi = [
-    "纪李/jili0.jpeg",
-    "纪李/jili1.jpg",
-    "纪李/jili2.jpg",
-    "纪李/jili3.jpg",
-    "纪李/jili4.jpg"];
+let Array = [];
+let Array2= [];
 
-let myNumber = Math.floor(Math.random() * 5);
+for (let i=0;i<=10;i++) {
+    Array.push(<div>{"/".repeat(i) + "\\".repeat(i)}</div>)
+}
 
-class App extends React.Component {
+for (let j=10;j===0;j--) {
+    Array2.push(<div>{"\\".repeat(j) + "/".repeat(j)}</div>)
+}
 
-    state = {
-        link: picturesOfJiLi[myNumber]
-    };
-
-    //why do I need the floor? Why not random times 100?
-    //100 can be any other number, right? Like 25? Or 37?
-
-    handleClick = () => {
-        myNumber = (myNumber + 1 + Math.floor(Math.random()*37) % 4) % 5;
-        this.setState({link: picturesOfJiLi[myNumber]})
-        };
-
-    render() {
+function App () {
     return (
-        <div>
-            Click on the picture to shuffle Ji Li pics:
-            <div>
-            <img src={this.state.link} alt={"unable to load Ji Li"} onClick={this.handleClick}/>
-            </div>
-        </div>
+        <div className="center">{Array}{Array2}</div>
     )
-}
-}
+};
 
 export default App;
